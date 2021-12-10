@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="scope">
+        <!-- Google Play Services-->
+        <item>com.google.android.gms</item>
+        <item>com.google.android.gms.location.history</item>
+        <!-- Google Apps-->
+        <item>com.android.vending</item>
+        <item>com.google.android.apps.customization.pixel</item>
+        <item>com.google.android.apps.fitness</item>
+        <item>com.google.android.apps.recorder</item>
+        <item>com.google.android.apps.photos</item>
+        <item>com.google.android.apps.subscriptions.red</item>
+        <item>com.google.android.apps.tachyon</item>
+        <item>com.google.android.apps.turboadapter</item>
+        <item>com.google.android.apps.wallpaper.pixel</item>
+        <item>com.google.android.as</item>
+        <item>com.google.android.dialer</item>
+        <item>com.google.android.googlequicksearchbox</item>
+        <item>com.google.android.inputmethod.latin</item>
+        <item>com.google.android.soundpicker</item>
+        <item>com.google.pixel.dynamicwallpapers</item>
+        <item>com.google.pixel.livewallpaper</item>
+        <item>com.google.android.apps.safetyhub</item>
+        <item>com.google.android.apps.turbo</item>
+        <item>com.google.android.apps.wallpaper</item>
+        <item>com.google.android.apps.maps</item>
+        <item>com.google.android.apps.nexuslauncher</item>
+    </string-array>
+</resources>
