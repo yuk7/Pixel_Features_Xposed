@@ -1,1 +1,1 @@
-# Pixel_Features_Xposed
+# PixelizerX
