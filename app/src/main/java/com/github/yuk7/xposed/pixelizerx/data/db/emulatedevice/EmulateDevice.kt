@@ -16,11 +16,11 @@ class EmulateDevice: Serializable {
     var deviceName: String = ""
 
     @ColumnInfo(name = "permission_denylist")
-    var permissionDenyList: String = ""
+    var permissionDenyList: List<String> = listOf()
 
     @ColumnInfo(name = "permission_allowlist")
-    var permissionAllowList: String = ""
+    var permissionAllowList: List<String> = listOf()
 
     @ColumnInfo(name = "props_overrides")
-    var props: String = ""
+    var props: Map<String, String> = mapOf()
 }

@@ -1,15 +1,14 @@
 package com.github.yuk7.xposed.pixelizerx.data.db
 
 import android.content.Context
-import androidx.room.Database
-import androidx.room.Room
-import androidx.room.RoomDatabase
+import androidx.room.*
 import com.github.yuk7.xposed.pixelizerx.data.db.emulatedevice.EmulateDevice
 import com.github.yuk7.xposed.pixelizerx.data.db.emulatedevice.EmulateDeviceDao
 import com.github.yuk7.xposed.pixelizerx.data.db.hookpackage.HookPackage
 import com.github.yuk7.xposed.pixelizerx.data.db.hookpackage.HookPackageDao
 
 @Database(entities = [EmulateDevice::class, HookPackage::class], version = 1, exportSchema = false)
+@TypeConverters(TypeConverter::class)
 abstract class AppDB : RoomDatabase() {
     abstract fun EmulateDeviceDao(): EmulateDeviceDao
     abstract fun HookPackageDao(): HookPackageDao
