@@ -23,6 +23,11 @@
         <meta-data android:name="xposedscope"
             android:resource="@array/scope" />
 
+        <provider
+            android:authorities="${applicationId}.SettingProvider"
+            android:name=".data.providers.SettingProvider"
+            android:exported="true" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
