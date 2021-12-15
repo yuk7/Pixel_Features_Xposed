@@ -6,7 +6,7 @@ import androidx.room.Index
 import androidx.room.PrimaryKey
 import java.io.Serializable
 
-@Entity(tableName = "emulate_device", indices = [Index(value = ["id", "device_name"], unique = true)])
+@Entity(tableName = "emulate_device", indices = [Index(value = ["device_name"], unique = true)])
 class EmulateDevice: Serializable {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
