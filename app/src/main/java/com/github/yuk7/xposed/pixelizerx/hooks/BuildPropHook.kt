@@ -1,9 +1,13 @@
 package com.github.yuk7.xposed.pixelizerx.hooks
 
-import de.robv.android.xposed.IXposedHookLoadPackage
-import de.robv.android.xposed.XposedBridge
-import de.robv.android.xposed.XposedHelpers
+import android.app.Application
+import android.content.Context
+import android.net.Uri
+import com.github.yuk7.xposed.pixelizerx.BuildConfig
+import com.github.yuk7.xposed.pixelizerx.data.providers.SettingProvider
+import de.robv.android.xposed.*
 import de.robv.android.xposed.callbacks.XC_LoadPackage.LoadPackageParam
+import de.robv.android.xposed.XposedHelpers
 
 
 class BuildPropHook: IXposedHookLoadPackage {
@@ -11,16 +15,26 @@ class BuildPropHook: IXposedHookLoadPackage {
         if (lpparam == null) {
             return
         }
-        XposedBridge.log("loaded pkg=" + lpparam.packageName)
-        val hookClass = XposedHelpers.findClass("android.os.Build", lpparam.classLoader)
-        XposedHelpers.setStaticObjectField(hookClass, "BOARD" , "HOOKED_BOARD")
-        XposedHelpers.setStaticObjectField(hookClass, "BOOTLOADER", "HOOKED_BL")
-        XposedHelpers.setStaticObjectField(hookClass, "BRAND", "HOOKED_BRAND")
-        XposedHelpers.setStaticObjectField(hookClass, "DEVICE", "HOOKED_DEVICE")
-        XposedHelpers.setStaticObjectField(hookClass, "FINGERPRINT", "HOOKED_FINGERPRINT")
-        XposedHelpers.setStaticObjectField(hookClass, "HARDWARE", "HOOKED_HARDWARE")
-        XposedHelpers.setStaticObjectField(hookClass, "MANUFACTURER", "HOOKED_MANUFACTURER")
-        XposedHelpers.setStaticObjectField(hookClass, "MODEL", "HOOKED_MODEL")
-    }
+        if (lpparam.packageName == BuildConfig.APPLICATION_ID) {
+            return
+        }
+        XposedHelpers.findAndHookMethod(Application::class.java, "attach", Context::class.java, object:XC_MethodHook() {
+            override fun afterHookedMethod(param: MethodHookParam) {
+                super.afterHookedMethod(param)
+                val context = param.args[0] as Context
 
+                val hookClass = XposedHelpers.findClass("android.os.Build", lpparam.classLoader)
+                val resolver = context.contentResolver
+                val cursor = resolver.query(Uri.parse(SettingProvider.providerUri+"/"+SettingProvider.keyProps),
+                    null, null, null, null)?: return
+                XposedBridge.log("props hooking: ${context.packageName}")
+                cursor!!.moveToFirst()
+                do {
+                    XposedBridge.log("set build field: ${cursor.getString(0)}=${cursor.getString(1)}")
+                    XposedHelpers.setStaticObjectField(hookClass, cursor.getString(0), cursor.getString(1))
+                }while (cursor.moveToNext())
+            }
+        })
+
+    }
 }
