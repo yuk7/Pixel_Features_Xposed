@@ -5,12 +5,14 @@ import android.content.ContentValues
 import android.database.Cursor
 import android.database.MatrixCursor
 import android.net.Uri
+import android.os.Binder
 import android.util.Log
 import com.github.yuk7.xposed.pixelizerx.BuildConfig
 import com.github.yuk7.xposed.pixelizerx.data.db.AppDB
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import java.io.File
+import java.lang.Exception
 
 class SettingProvider: ContentProvider() {
     companion object {
@@ -32,17 +34,47 @@ class SettingProvider: ContentProvider() {
         sortOrder: String?
     ): Cursor? {
         val name = File(uri.path).name
+        if (context == null || callingPackage == null) {
+            return null
+        }
 
-        val cursor = MatrixCursor(arrayOf("name", "value"))
         val db = AppDB.getInstance(context!!)
-        val pkg = db.HookPackageDao().findByPackageName(name)
+        val pkg = try {
+            db.HookPackageDao().findByPackageName(callingPackage.toString())
+        } catch (_: Exception) {
+            return null
+        }
+
         val device = db.EmulateDeviceDao().findById(pkg.emulateDeviceId)
 
-        cursor.addRow(arrayOf(keyProps, Json.encodeToString(device.props)))
-        cursor.addRow(arrayOf(keyPermissionAllow, Json.encodeToString(device.permissionAllowList)))
-        cursor.addRow(arrayOf(keyPermissionDeny, Json.encodeToString(device.permissionDenyList)))
-
-        return cursor
+        return when (name) {
+            keyProps -> {
+                val cursor = MatrixCursor(arrayOf("key", "value"))
+                device.props.forEach {
+                    cursor.addRow(arrayOf(it.key, it.value))
+                }
+                cursor
+            }
+            keyPermissionAllow -> {
+                val cursor = MatrixCursor(arrayOf("permission"))
+                device.permissionAllowList.forEach {
+                    cursor.addRow(arrayOf(it))
+                }
+                cursor
+            }
+            keyPermissionDeny -> {
+                val cursor = MatrixCursor(arrayOf("permission"))
+                device.permissionDenyList.forEach {
+                    cursor.addRow(arrayOf(it))
+                }
+                cursor
+            }
+            else -> {
+                Log.d("SettingProvider",
+                    "Query Argument Invalid [$name] from: $callingPackage")
+                null
+            }
+        }
     }
 
     override fun getType(p0: Uri): String? {
