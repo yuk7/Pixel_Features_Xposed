@@ -29,10 +29,12 @@ class BuildPropHook: IXposedHookLoadPackage {
                     null, null, null, null)?: return
                 XposedBridge.log("props hooking: ${context.packageName}")
                 cursor!!.moveToFirst()
-                do {
-                    XposedBridge.log("set build field: ${cursor.getString(0)}=${cursor.getString(1)}")
-                    XposedHelpers.setStaticObjectField(hookClass, cursor.getString(0), cursor.getString(1))
-                }while (cursor.moveToNext())
+                if (cursor.count > 0) {
+                    do {
+                        XposedBridge.log("set build field: ${cursor.getString(0)}=${cursor.getString(1)}")
+                        XposedHelpers.setStaticObjectField(hookClass, cursor.getString(0), cursor.getString(1))
+                    }while (cursor.moveToNext())
+                }
             }
         })
 
