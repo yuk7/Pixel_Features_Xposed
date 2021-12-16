@@ -33,38 +33,35 @@ class SettingProvider: ContentProvider() {
         selectionArgs: Array<out String>?,
         sortOrder: String?
     ): Cursor? {
-        val name = File(uri.path).name
+        val name = File(uri.path!!).name
         if (context == null || callingPackage == null) {
             return null
         }
 
-        val db = AppDB.getInstance(context!!)
-        val pkg = try {
-            db.HookPackageDao().findByPackageName(callingPackage.toString())
-        } catch (_: Exception) {
-            return null
-        }
+        Log.d("SettingProvider", "${callingPackage}: ${name}")
 
+        val db = AppDB.getInstance(context!!)
+        val pkg = db.HookPackageDao().findByPackageName(callingPackage.toString()) ?: return null
         val device = db.EmulateDeviceDao().findById(pkg.emulateDeviceId)
 
         return when (name) {
             keyProps -> {
                 val cursor = MatrixCursor(arrayOf("key", "value"))
-                device.props.forEach {
+                device!!.props.forEach {
                     cursor.addRow(arrayOf(it.key, it.value))
                 }
                 cursor
             }
             keyPermissionAllow -> {
                 val cursor = MatrixCursor(arrayOf("permission"))
-                device.permissionAllowList.forEach {
+                device!!.permissionAllowList.forEach {
                     cursor.addRow(arrayOf(it))
                 }
                 cursor
             }
             keyPermissionDeny -> {
                 val cursor = MatrixCursor(arrayOf("permission"))
-                device.permissionDenyList.forEach {
+                device!!.permissionDenyList.forEach {
                     cursor.addRow(arrayOf(it))
                 }
                 cursor

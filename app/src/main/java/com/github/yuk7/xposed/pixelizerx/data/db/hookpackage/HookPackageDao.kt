@@ -11,10 +11,10 @@ interface HookPackageDao {
     fun getAll(): List<HookPackage>
 
     @Query("SELECT * FROM hook_package WHERE id = :id LIMIT 1")
-    fun findById(id: Int): HookPackage
+    fun findById(id: Int): HookPackage?
 
     @Query("SELECT * FROM hook_package WHERE package_name = :packageName LIMIT 1")
-    fun findByPackageName(packageName: String): HookPackage
+    fun findByPackageName(packageName: String): HookPackage?
 
     @Insert
     fun insert(hookPackage: HookPackage)

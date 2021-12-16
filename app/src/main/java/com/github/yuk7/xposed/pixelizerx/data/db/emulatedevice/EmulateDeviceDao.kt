@@ -11,7 +11,7 @@ interface EmulateDeviceDao {
     fun getAll(): List<EmulateDevice>
 
     @Query("SELECT * FROM emulate_device WHERE id = :id LIMIT 1")
-    fun findById(id: Int): EmulateDevice
+    fun findById(id: Int): EmulateDevice?
 
     @Insert
     fun insert(emulateDevice: EmulateDevice)
