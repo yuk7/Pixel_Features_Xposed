@@ -4,6 +4,7 @@ import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
+import com.github.yuk7.xposed.pixelizerx.data.db.emulatedevice.EmulateDevice
 
 @Dao
 interface HookPackageDao {
@@ -18,6 +19,12 @@ interface HookPackageDao {
 
     @Insert
     fun insert(hookPackage: HookPackage)
+
+    @Insert
+    fun insertAll(vararg hookPackage: HookPackage)
+
+    @Insert
+    fun insertAll(hookPackageList: List<HookPackage>)
 
     @Delete
     fun delete(hookPackage: HookPackage)

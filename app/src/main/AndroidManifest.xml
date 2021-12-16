@@ -28,6 +28,7 @@
         <provider
             android:authorities="${applicationId}.SettingProvider"
             android:name=".data.providers.SettingProvider"
+            android:directBootAware="true"
             android:enabled="true"
             android:exported="true"
             android:grantUriPermissions="true" />
