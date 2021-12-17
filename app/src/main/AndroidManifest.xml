@@ -27,7 +27,7 @@
 
         <provider
             android:authorities="${applicationId}.SettingProvider"
-            android:name=".data.providers.SettingProvider"
+            android:name=".providers.SettingProvider"
             android:directBootAware="true"
             android:enabled="true"
             android:exported="true"

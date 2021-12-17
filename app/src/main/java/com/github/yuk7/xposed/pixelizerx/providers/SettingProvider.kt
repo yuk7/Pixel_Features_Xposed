@@ -1,20 +1,16 @@
-package com.github.yuk7.xposed.pixelizerx.data.providers
+package com.github.yuk7.xposed.pixelizerx.providers
 
 import android.content.ContentProvider
 import android.content.ContentValues
 import android.database.Cursor
 import android.database.MatrixCursor
 import android.net.Uri
-import android.os.Binder
 import android.util.Log
 import com.github.yuk7.xposed.pixelizerx.BuildConfig
 import com.github.yuk7.xposed.pixelizerx.data.db.AppDB
-import kotlinx.serialization.encodeToString
-import kotlinx.serialization.json.Json
 import java.io.File
-import java.lang.Exception
 
-class SettingProvider: ContentProvider() {
+class SettingProvider : ContentProvider() {
     companion object {
         const val keyProps = "props"
         const val keyPermissionAllow = "permission_allowlist"
@@ -67,8 +63,10 @@ class SettingProvider: ContentProvider() {
                 cursor
             }
             else -> {
-                Log.d("SettingProvider",
-                    "Query Argument Invalid [$name] from: $callingPackage")
+                Log.d(
+                    "SettingProvider",
+                    "Query Argument Invalid [$name] from: $callingPackage"
+                )
                 null
             }
         }

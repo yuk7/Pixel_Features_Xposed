@@ -4,7 +4,7 @@ import android.app.Application
 import android.content.Context
 import android.net.Uri
 import com.github.yuk7.xposed.pixelizerx.BuildConfig
-import com.github.yuk7.xposed.pixelizerx.data.providers.SettingProvider
+import com.github.yuk7.xposed.pixelizerx.providers.SettingProvider
 import de.robv.android.xposed.*
 import de.robv.android.xposed.callbacks.XC_LoadPackage.LoadPackageParam
 import de.robv.android.xposed.XposedHelpers
