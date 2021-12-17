@@ -3,7 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/ic_android_black_24dp.xml" value="0.2" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_main_appslist.xml" value="0.18385416666666668" />
+        <entry key="app/src/main/res/layout/fragment_main_devices.xml" value="0.18385416666666668" />
+        <entry key="app/src/main/res/layout/fragment_main_settings.xml" value="0.18385416666666668" />
+        <entry key="app/src/main/res/menu/bottom_nav.xml" value="0.18385416666666668" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2" />
       </map>
     </option>
   </component>

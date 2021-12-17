@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">PixelizerX</string>
+    <string name="bnv_applications">Applications</string>
+    <string name="bnv_device_data">Device Data</string>
+    <string name="bnv_others">Others</string>
 </resources>
