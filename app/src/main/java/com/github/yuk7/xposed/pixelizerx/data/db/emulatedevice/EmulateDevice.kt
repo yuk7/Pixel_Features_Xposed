@@ -24,7 +24,6 @@ class EmulateDevice: Serializable {
     @ColumnInfo(name = "props_overrides")
     var props: Map<String, String> = mapOf()
 
-    constructor()
 
     constructor(deviceName: String, props: Map<String, String>, permissionAllowList: List<String>, permissionDenyList: List<String>) {
         this.deviceName = deviceName

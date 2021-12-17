@@ -21,8 +21,6 @@ class HookPackage: Serializable {
     @ColumnInfo(name = "emulate_device_id", index = true)
     var emulateDeviceId: Int = 0
 
-    constructor()
-
     constructor(packageName: String, emulateDeviceId: Int) {
         this.packageName = packageName
         this.emulateDeviceId = emulateDeviceId
