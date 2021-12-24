@@ -6,7 +6,8 @@ class PixelPropsDef {
     companion object {
         fun getAllInitialDeviceProps(): List<EmulateDevice> {
             val pixelXL_10 = EmulateDevice(
-                "Pixel XL (Android 10)",
+                "Pixel XL",
+                "Android 10",
                 mapOf(
                     Pair("BRAND", "google"),
                     Pair("MANUFACTURER", "Google"),
@@ -23,7 +24,8 @@ class PixelPropsDef {
                 PixelFeatures.generateFeaturesBlackList(PixelFeatures.PIXEL_2016)
             )
             val pixel2_10 = EmulateDevice(
-                "Pixel 2 (Android 10)",
+                "Pixel 2",
+                "Android 10",
                 pixelXL_10.build + mapOf(
                     Pair("DEVICE", "walleye"),
                     Pair("BOARD", "walleye"),
@@ -39,6 +41,7 @@ class PixelPropsDef {
             )
             val pixel2_11 = EmulateDevice(
                 "Pixel 2 (Android 11)",
+                "Android 11",
                 pixel2_10.build + mapOf(
                     Pair(
                         "FINGERPRINT",
@@ -50,7 +53,8 @@ class PixelPropsDef {
             )
 
             val pixel3XL_11 = EmulateDevice(
-                "Pixel 3 XL (Android 11)",
+                "Pixel 3 XL",
+                "Android 11",
                 pixelXL_10.build + mapOf(
                     Pair("DEVICE", "crosshatch"),
                     Pair("BOARD", "crosshatch"),
@@ -66,7 +70,8 @@ class PixelPropsDef {
             )
 
             val pixel3XL_12 = EmulateDevice(
-                "Pixel 3 XL (Android 12)",
+                "Pixel 3 XL",
+                "Android 12",
                 pixel3XL_11.build + mapOf(
                     Pair(
                         "FINGERPRINT",
@@ -78,7 +83,8 @@ class PixelPropsDef {
             )
 
             val pixel5_11 = EmulateDevice(
-                "Pixel 5 (Android 11)",
+                "Pixel 5",
+                "Android 11",
                 pixelXL_10.build + mapOf(
                     Pair("DEVICE", "redfin"),
                     Pair("BOARD", "redfin"),
@@ -93,7 +99,8 @@ class PixelPropsDef {
                 PixelFeatures.generateFeaturesBlackList(PixelFeatures.PIXEL_2020)
             )
             val pixel5_12 = EmulateDevice(
-                "Pixel 5 (Android 12)",
+                "Pixel 5",
+                "Android 12",
                 pixel5_11.build + mapOf(
                     Pair(
                         "FINGERPRINT",
@@ -105,6 +112,7 @@ class PixelPropsDef {
             )
             val pixel6_12 = EmulateDevice(
                 "Pixel 6 Pro (Android 12)",
+                "Android 12",
                 pixel2_11.build + mapOf(
                     Pair("DEVICE", "raven"),
                     Pair("PRODUCT", "raven"),

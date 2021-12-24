@@ -6,7 +6,7 @@ import androidx.room.Index
 import androidx.room.PrimaryKey
 import java.io.Serializable
 
-@Entity(tableName = "emulate_device", indices = [Index(value = ["device_name"], unique = true)])
+@Entity(tableName = "emulate_device", indices = [Index(value = ["device_name", "variant_tag"], unique = true)])
 class EmulateDevice: Serializable {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
@@ -14,6 +14,9 @@ class EmulateDevice: Serializable {
 
     @ColumnInfo(name = "device_name")
     var deviceName: String = ""
+
+    @ColumnInfo(name = "variant_tag")
+    var variant: String = ""
 
     @ColumnInfo(name = "hook_enabled")
     var enabled: Boolean = true
@@ -28,8 +31,9 @@ class EmulateDevice: Serializable {
     var build: Map<String, String> = mapOf()
 
 
-    constructor(deviceName: String, build: Map<String, String>, permissionAllowList: List<String>, permissionDenyList: List<String>) {
+    constructor(deviceName: String, variant: String, build: Map<String, String>, permissionAllowList: List<String>, permissionDenyList: List<String>) {
         this.deviceName = deviceName
+        this.variant = variant
         this.permissionAllowList = permissionAllowList
         this.permissionDenyList = permissionDenyList
         this.build = build
