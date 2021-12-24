@@ -15,6 +15,9 @@ class HookPackage: Serializable {
     @ColumnInfo(name = "id")
     var id: Int = 0
 
+    @ColumnInfo(name = "hook_enabled")
+    var enabled: Boolean = true
+
     @ColumnInfo(name = "package_name")
     var packageName: String = ""
 

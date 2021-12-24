@@ -32,7 +32,7 @@ class BuildPropHook : IXposedHookLoadPackage {
                     val hookClass = XposedHelpers.findClass("android.os.Build", lpparam.classLoader)
                     val resolver = context.contentResolver
                     val cursor = resolver.query(
-                        Uri.parse(SettingProvider.providerUri + "/" + SettingProvider.keyProps),
+                        Uri.parse(SettingProvider.providerUri + "/" + SettingProvider.keyBuild),
                         null, null, null, null
                     ) ?: return
                     XposedBridge.log("props hooking: ${context.packageName}")

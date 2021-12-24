@@ -18,9 +18,6 @@ class EmulateDevice: Serializable {
     @ColumnInfo(name = "variant_tag")
     var variant: String = ""
 
-    @ColumnInfo(name = "hook_enabled")
-    var enabled: Boolean = true
-
     @ColumnInfo(name = "permission_denylist")
     var permissionDenyList: List<String> = listOf()
 

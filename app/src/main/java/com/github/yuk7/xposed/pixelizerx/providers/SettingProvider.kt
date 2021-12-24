@@ -12,7 +12,7 @@ import java.io.File
 
 class SettingProvider : ContentProvider() {
     companion object {
-        const val keyProps = "props"
+        const val keyBuild = "build"
         const val keyPermissionAllow = "permission_allowlist"
         const val keyPermissionDeny = "permission_denylist"
         const val providerUri = "content://" + BuildConfig.APPLICATION_ID + ".SettingProvider"
@@ -41,24 +41,30 @@ class SettingProvider : ContentProvider() {
         val device = db.EmulateDeviceDao().findById(pkg.emulateDeviceId)
 
         return when (name) {
-            keyProps -> {
+            keyBuild -> {
                 val cursor = MatrixCursor(arrayOf("key", "value"))
-                device!!.build.forEach {
-                    cursor.addRow(arrayOf(it.key, it.value))
+                if (pkg.enabled) {
+                    device!!.build.forEach {
+                        cursor.addRow(arrayOf(it.key, it.value))
+                    }
                 }
                 cursor
             }
             keyPermissionAllow -> {
                 val cursor = MatrixCursor(arrayOf("permission"))
-                device!!.permissionAllowList.forEach {
-                    cursor.addRow(arrayOf(it))
+                if (pkg.enabled) {
+                    device!!.permissionAllowList.forEach {
+                        cursor.addRow(arrayOf(it))
+                    }
                 }
                 cursor
             }
             keyPermissionDeny -> {
                 val cursor = MatrixCursor(arrayOf("permission"))
-                device!!.permissionDenyList.forEach {
-                    cursor.addRow(arrayOf(it))
+                if (pkg.enabled) {
+                    device!!.permissionDenyList.forEach {
+                        cursor.addRow(arrayOf(it))
+                    }
                 }
                 cursor
             }
