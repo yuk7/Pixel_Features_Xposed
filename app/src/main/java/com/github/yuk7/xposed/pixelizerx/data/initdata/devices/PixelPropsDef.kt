@@ -24,7 +24,7 @@ class PixelPropsDef {
             )
             val pixel2_10 = EmulateDevice(
                 "Pixel 2 (Android 10)",
-                pixelXL_10.props + mapOf(
+                pixelXL_10.build + mapOf(
                     Pair("DEVICE", "walleye"),
                     Pair("BOARD", "walleye"),
                     Pair("PRODUCT", "walleye"),
@@ -39,7 +39,7 @@ class PixelPropsDef {
             )
             val pixel2_11 = EmulateDevice(
                 "Pixel 2 (Android 11)",
-                pixel2_10.props + mapOf(
+                pixel2_10.build + mapOf(
                     Pair(
                         "FINGERPRINT",
                         "google/walleye/walleye:11/RP1A.201005.004/6782484:user/release-keys"
@@ -51,7 +51,7 @@ class PixelPropsDef {
 
             val pixel3XL_11 = EmulateDevice(
                 "Pixel 3 XL (Android 11)",
-                pixelXL_10.props + mapOf(
+                pixelXL_10.build + mapOf(
                     Pair("DEVICE", "crosshatch"),
                     Pair("BOARD", "crosshatch"),
                     Pair("PRODUCT", "crosshatch"),
@@ -67,7 +67,7 @@ class PixelPropsDef {
 
             val pixel3XL_12 = EmulateDevice(
                 "Pixel 3 XL (Android 12)",
-                pixel3XL_11.props + mapOf(
+                pixel3XL_11.build + mapOf(
                     Pair(
                         "FINGERPRINT",
                         "google/crosshatch/crosshatch:12/SP1A.210812.015/7679548:user/release-keys"
@@ -79,7 +79,7 @@ class PixelPropsDef {
 
             val pixel5_11 = EmulateDevice(
                 "Pixel 5 (Android 11)",
-                pixelXL_10.props + mapOf(
+                pixelXL_10.build + mapOf(
                     Pair("DEVICE", "redfin"),
                     Pair("BOARD", "redfin"),
                     Pair("PRODUCT", "redfin"),
@@ -94,7 +94,7 @@ class PixelPropsDef {
             )
             val pixel5_12 = EmulateDevice(
                 "Pixel 5 (Android 12)",
-                pixel5_11.props + mapOf(
+                pixel5_11.build + mapOf(
                     Pair(
                         "FINGERPRINT",
                         "google/redfin/redfin:12/SQ1A.211205.008/7888514:user/release-keys"
@@ -105,7 +105,7 @@ class PixelPropsDef {
             )
             val pixel6_12 = EmulateDevice(
                 "Pixel 6 Pro (Android 12)",
-                pixel2_11.props + mapOf(
+                pixel2_11.build + mapOf(
                     Pair("DEVICE", "raven"),
                     Pair("PRODUCT", "raven"),
                     Pair("MODEL", "Pixel 6 Pro"),

@@ -43,7 +43,7 @@ class SettingProvider : ContentProvider() {
         return when (name) {
             keyProps -> {
                 val cursor = MatrixCursor(arrayOf("key", "value"))
-                device!!.props.forEach {
+                device!!.build.forEach {
                     cursor.addRow(arrayOf(it.key, it.value))
                 }
                 cursor

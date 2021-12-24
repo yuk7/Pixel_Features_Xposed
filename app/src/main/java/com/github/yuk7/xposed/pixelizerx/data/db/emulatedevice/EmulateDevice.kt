@@ -15,20 +15,23 @@ class EmulateDevice: Serializable {
     @ColumnInfo(name = "device_name")
     var deviceName: String = ""
 
+    @ColumnInfo(name = "hook_enabled")
+    var enabled: Boolean = true
+
     @ColumnInfo(name = "permission_denylist")
     var permissionDenyList: List<String> = listOf()
 
     @ColumnInfo(name = "permission_allowlist")
     var permissionAllowList: List<String> = listOf()
 
-    @ColumnInfo(name = "props_overrides")
-    var props: Map<String, String> = mapOf()
+    @ColumnInfo(name = "build_overrides")
+    var build: Map<String, String> = mapOf()
 
 
-    constructor(deviceName: String, props: Map<String, String>, permissionAllowList: List<String>, permissionDenyList: List<String>) {
+    constructor(deviceName: String, build: Map<String, String>, permissionAllowList: List<String>, permissionDenyList: List<String>) {
         this.deviceName = deviceName
         this.permissionAllowList = permissionAllowList
         this.permissionDenyList = permissionDenyList
-        this.props = props
+        this.build = build
     }
 }
