@@ -5,6 +5,8 @@
       <map>
         <entry key="app/src/main/res/drawable/ic_android_black_24dp.xml" value="0.2" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/appslist_item.xml" value="0.19947916666666668" />
+        <entry key="app/src/main/res/layout/appslist_recycler_item.xml" value="0.5" />
         <entry key="app/src/main/res/layout/fragment_main_appslist.xml" value="0.18385416666666668" />
         <entry key="app/src/main/res/layout/fragment_main_devices.xml" value="0.18385416666666668" />
         <entry key="app/src/main/res/layout/fragment_main_settings.xml" value="0.18385416666666668" />
